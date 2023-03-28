@@ -1,0 +1,35 @@
+.wrapper {
+  width: 90px;
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: var(--primary-color);
+    .dateofweek,
+    .date {
+      color: white;
+    }
+  }
+}
+.dateofweek,
+.date {
+  display: block;
+
+  color: #8c9bb4;
+  font-weight: 600;
+}
+.dateofweek {
+  font-size: 1.6rem;
+}
+.date {
+  font-size: 1.4rem;
+}
+.selected {
+  background-color: var(--primary-color);
+  .dateofweek,
+  .date {
+    color: white;
+  }
+}

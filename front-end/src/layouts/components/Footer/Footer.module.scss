@@ -1,0 +1,100 @@
+.wrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding-top: 60px;
+  color: #fff;
+  background: url(../../../assets/images/bg-grid.jpg) top center repeat;
+}
+.logo {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  padding-top: 26px;
+  margin-left: -100px;
+  width: 175px;
+  height: 200px;
+  text-align: center;
+  border-radius: 50%;
+  background: url(../../../assets/images/bg-grid.jpg) top center repeat;
+}
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-top: 10px;
+  gap: 40px;
+}
+.about-me {
+  width: 200px;
+  margin-left: 45px;
+}
+.rule-and-contract {
+  margin-left: 30px;
+}
+.title {
+  position: relative;
+  font-size: 1.8rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 37px;
+    height: 3px;
+    background: #c3cc26;
+  }
+}
+
+.menu-item {
+  display: block;
+  list-style: none;
+  color: #c3cc26;
+  font-size: 1.6rem;
+  line-height: 22px;
+  font-weight: 300;
+  margin-bottom: 11px;
+
+  width: 250px;
+  word-wrap: break-word;
+  &:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+  }
+}
+.copyright {
+  border-top: 2px solid #343434;
+  padding: 26px 0px 26px 0px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  margin-top: 45px;
+}
+.to-top {
+  display: flex;
+  gap: 15px;
+  position: fixed;
+  z-index: 99999;
+  bottom: 20px;
+  right: 120px;
+  cursor: pointer;
+
+  .title-to-top {
+    font-size: 16px;
+
+    color: #d4dd29;
+  }
+
+  .up-to-top {
+    height: 28px;
+    width: 28px;
+    font-size: 18px;
+    text-align: center;
+  }
+}

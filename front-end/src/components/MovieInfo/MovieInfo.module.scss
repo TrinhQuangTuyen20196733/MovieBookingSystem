@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  cursor: pointer;
+}
+.movie-title-wrapper {
+  align-items: center;
+  width: 200px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.movie-title {
+  word-wrap: break-word;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.wrapper:hover .image {
+  transform: scale(1.1);
+}
+
+.image {
+  transition: transform 0.3s;
+}

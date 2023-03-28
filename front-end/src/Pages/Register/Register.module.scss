@@ -1,0 +1,97 @@
+.wrapper {
+  position: relative;
+  padding-bottom: 89px;
+  width: 100%;
+  height: auto;
+  background: #132028 url(../../assets/images/bg-register.png) center top repeat;
+  padding-top: 40px;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  .product-title {
+    font-size: 31px;
+    font-weight: 600;
+    &:hover {
+      color: #d4dd29;
+      text-decoration: underline;
+    }
+  }
+  .separator-character {
+    font-size: 31px;
+  }
+}
+.container {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.login,
+.sign-up {
+  width: 40%;
+}
+.login h4,
+.sign-up h4 {
+  margin-bottom: 22px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 33px;
+  font-family: "Roboto", sans-serif;
+}
+.login-info,
+.sign-up-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 32px 25px;
+  background: #1c262f;
+}
+.login-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .password-forgot {
+    font-size: 13px;
+    color: #646e72;
+    text-decoration: underline;
+  }
+}
+.btn-login {
+  width: 175px;
+  height: 50px;
+  font-size: 1.6rem;
+}
+.policy-check {
+  padding-left: 15px;
+}
+.policy-check span {
+  color: #bfc9d2;
+  line-height: 35px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.select-role {
+  height: 35px;
+  width: 100%;
+  padding-left: 15px;
+  display: flex;
+}
+.role-header {
+  color: #bfc9d2;
+  line-height: 35px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
+.btn-select {
+  width: 120px;
+  font-size: 1.4rem;
+  margin-left: 95px;
+  background: #37424b;
+  color: #bfc9d2;
+}

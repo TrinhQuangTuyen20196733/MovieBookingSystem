@@ -1,0 +1,293 @@
+.wrapper {
+  width: 100%;
+  height: auto;
+  background: #000;
+  padding: 80px 10%;
+  padding-bottom: 200px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+.movie-infor {
+  display: flex;
+  gap: 30px;
+}
+.movie-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.movie-content h4 {
+  color: #89c441;
+  line-height: 20px;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.movie-content span {
+  font-size: 1.6rem;
+}
+.notice h3 {
+  padding-top: 50px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: red;
+  font-size: 2rem;
+}
+.notice p {
+  color: #fff;
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif !important;
+  margin-bottom: 5px;
+}
+.notice span {
+  color: #8bc34a;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+.order-details {
+  background-color: rgb(51, 51, 51);
+  margin-right: 150px;
+  width: 300px;
+  height: auto;
+
+  padding: 15px 10px;
+}
+.order-details h2 {
+  font-size: 22px;
+  color: #fff;
+  padding-left: 10px;
+  border-bottom: #fff solid 2px;
+  font-weight: 600;
+}
+.movie-action {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.Xmark-icon {
+  color: red;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.movie-title {
+  font-weight: normal;
+  color: #89c441;
+  font-size: 1.8rem;
+}
+
+.cost-movie {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
+.total-cost {
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+.select-ticket {
+  margin-top: 50px;
+  display: flex;
+}
+.standard-title {
+  background-color: #89c441;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.standard-title p {
+  padding-left: 10px;
+  counter-reset: #fff;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+.ticket-container {
+  width: 600px;
+  border: #89c441 solid 1px;
+  padding: 20px 20px;
+  font-size: 1.4rem;
+}
+.column-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.column-title h6 {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.row-item {
+  align-items: center;
+  display: flex;
+  padding: 5px 0;
+}
+.choose-ticket {
+  height: 30px;
+  width: 100px;
+  display: flex;
+  margin-left: 80px;
+}
+.sub,
+.plus {
+  width: 50px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  border: rgb(71, 68, 68) solid 0.1px;
+  color: #89c441;
+  font-weight: 800;
+  cursor: pointer;
+}
+.cost-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 40px;
+  background-color: #fff;
+  color: #000;
+  font-size: 1.8rem;
+}
+.seat-type {
+  height: 30px;
+  width: 120px;
+  margin-right: 40px;
+}
+.cost {
+  height: 30px;
+  width: 100px;
+}
+.total {
+  margin-left: 70px;
+  height: 30px;
+  width: 100px;
+  text-align: end;
+}
+.cost-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.seat-type-card {
+  width: 150px;
+  line-height: 1.4rem;
+  font-family: "Roboto", sans-serif !important;
+}
+.cost-card .amount {
+  color: #89c441;
+}
+.choose-seat {
+  float: right;
+  margin: 20px 0;
+  background-color: red !important;
+  font-size: 1.8rem;
+  color: #fff;
+  &:hover {
+    background-color: #fff !important;
+  }
+}
+.seat-movie h2 {
+  color: #89c441;
+  margin: 30px 0;
+  font-size: 2.6rem;
+  font-family: "Roboto", sans-serif;
+}
+.instructor {
+  height: auto;
+  width: 66%;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 100%;
+  line-height: 30px;
+}
+.instructor b {
+  color: #8bc34a;
+  font-weight: bold;
+}
+.seat-area {
+  width: 65%;
+  margin-bottom: 1000px;
+  // background: #14252d;
+}
+
+.food-area {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 50px 0;
+}
+.food-area h2 {
+  color: #89c441;
+  font-size: 3rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+.food-instruction {
+  line-height: 16px;
+  color: #ccc;
+  font-size: 1.8rem;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 50px;
+}
+.concession {
+  background-color: #89c441;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-weight: 700;
+}
+.food-booking {
+  display: flex;
+}
+.food-container {
+  display: flex;
+}
+.food-item {
+  height: 200px;
+  width: 200px;
+  border: #89c441 1px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.combo {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  color: #ccc;
+}
+.food-cost {
+  color: #89c441;
+  font-size: 2rem;
+}
+.choose-food-item {
+  height: 30px;
+  width: 100px;
+  display: flex;
+}
+.btn-next {
+  margin: 50px 0;
+  background-color: red !important;
+  margin-left: 62%;
+  font-size: 1.8rem;
+  color: #fff;
+  &:hover {
+    background-color: #fff !important;
+  }
+  cursor: pointer;
+}

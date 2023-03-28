@@ -1,0 +1,142 @@
+.wrapper {
+  padding-top: 19px;
+  height: 75px;
+  width: 100%;
+  position: relative;
+  background: #111111 url(../../../assets/images/backgroundHeader.jpg) 0 0
+    repeat-x;
+}
+.ticket {
+  margin-left: 100px;
+  font-size: var(--font-size-button);
+  height: 36px;
+  width: 108px;
+  text-decoration: none !important;
+  padding: 10px 25px;
+}
+.logo {
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  max-width: 75px;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  height: auto;
+  z-index: 100;
+}
+
+.line-header1 {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  max-width: 100%;
+  height: auto;
+  -webkit-transform: translate(-50%, 0);
+  z-index: 1;
+}
+.action {
+  z-index: 99999999999;
+  position: absolute;
+  margin-top: 5px;
+  top: 10px;
+  right: 35px;
+  width: 375px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  .btn-login {
+    margin-left: 15px;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    font-size: var(--font-size-button);
+  }
+}
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 375px;
+  background: #141414;
+  padding: 17px 0;
+  left: -38.5px;
+  top: -9.5px;
+}
+.menu-link {
+  padding-left: 40px;
+  color: #bfbfbf;
+  line-height: 32px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+    color: var(--hover-color);
+  }
+}
+.login-info {
+  background: #121825;
+  width: 315px;
+  padding: 15px;
+  right: -120px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  .login-input {
+    color: #fff;
+    width: 100%;
+    padding: 0 15px;
+    font-size: 13px;
+    line-height: 36px;
+    background-color: rgb(39, 50, 69);
+  }
+}
+.login-action {
+  .btn-login {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.8rem;
+    margin-left: 0;
+  }
+  .password {
+    color: #646e72;
+    text-decoration: underline;
+    float: right;
+    margin-top: 10px;
+    font-size: 15px;
+    &:hover {
+      color: var(--hover-color);
+    }
+  }
+}
+.membership {
+  height: 40px;
+  &:hover {
+    color: #fff;
+    background-color: #d2dba5;
+  }
+}
+.log-out {
+  position: fixed;
+  right: 30px;
+  cursor: pointer;
+  .user-name {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #89c441;
+  }
+  .btn-logout {
+    font-size: 2.5rem;
+    font-weight: 600;
+    &:hover,
+    &:link,
+    &:visited {
+      color: white;
+    }
+  }
+}

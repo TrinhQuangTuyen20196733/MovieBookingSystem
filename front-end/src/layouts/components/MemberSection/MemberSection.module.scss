@@ -1,0 +1,16 @@
+.wrapper {
+  width: 100%;
+  height: auto;
+  background: url(../../../assets/images/bg-member.jpg) fixed repeat;
+  padding: 50px 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding-top: 700px;
+}
+.list-car-member {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}

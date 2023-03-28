@@ -1,0 +1,106 @@
+.wrapper {
+  width: 100%;
+  height: auto;
+  background-color: #ece9e9;
+  padding-bottom: 80px;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 60px;
+  color: black;
+  font-size: 2.4rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  align-items: center;
+}
+.search-area {
+  width: 50%;
+}
+
+.search-bar label {
+  font-size: 2rem;
+  color: green;
+}
+.search-bar input {
+  height: 25px;
+  font-size: 1.6rem;
+  margin-left: 100px;
+}
+.icon {
+  font-size: 3rem !important;
+  cursor: pointer;
+}
+.btn-add {
+  font-size: 1.5rem;
+  height: 40px;
+  width: 100px;
+  &:hover {
+    background-color: black;
+  }
+}
+.MuiTable-root {
+  background-color: #f1e9e9;
+}
+
+.MuiTable-root .header-cell {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.MuiTable-root .body-cell {
+  font-size: 1.6rem;
+}
+.MuiTable-root .btn-delete {
+  font-size: 30px;
+  background-color: rgb(223, 132, 132);
+  color: white;
+  margin-right: 15px;
+  &:hover {
+    background-color: black;
+  }
+}
+.MuiTable-root .btn-edit {
+  font-size: 30px;
+  background-color: rgb(33, 183, 105);
+  color: white;
+  &:hover {
+    background-color: black;
+  }
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 800px;
+  // color: black;
+}
+.pagination li {
+  display: inline-block;
+  margin: 0 5px;
+  padding-top: 50px;
+}
+.pagination li a {
+  color: #333;
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.8rem;
+
+  cursor: pointer;
+  &:hover {
+    color: rgb(223, 104, 104);
+  }
+}
+
+.pagination li.active a {
+  background-color: var(--primary-color);
+  color: #333;
+}
+
+.pagination li.disabled a {
+  color: #ccc;
+}

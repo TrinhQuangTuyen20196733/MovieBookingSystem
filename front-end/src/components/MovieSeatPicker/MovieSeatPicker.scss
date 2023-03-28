@@ -1,0 +1,89 @@
+.annotation {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+.seat-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+}
+.seat {
+  color: white;
+  width: 25px;
+  height: 25px;
+  background-color: rgb(72, 67, 67);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(214, 82, 82);
+  }
+}
+.seat-area {
+  padding: 30px 29%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 10px;
+  font-size: 1.4rem;
+  margin: 20px 0;
+}
+.sold {
+  background-color: hsl(0, 0%, 90%);
+  color: hsl(0, 0%, 90%);
+  pointer-events: none;
+}
+.selected {
+  background-color: rgb(214, 82, 82) !important;
+}
+.row-seat {
+  background-color: rgb(156, 121, 121);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.screen {
+  margin-top: 20px;
+  width: 60%;
+  height: 40px;
+  background-color: rgb(37, 36, 36);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.theater {
+  display: flex;
+  flex-direction: column;
+  background: #14252d;
+  align-items: center;
+}
+.next-click {
+  float: right;
+  margin: 20px 0;
+  background-color: red !important;
+  font-size: 1.8rem;
+  color: #fff;
+  &:hover {
+    background-color: #fff !important;
+  }
+}
+.choose-food {
+  float: right;
+  margin: 20px 0;
+  background-color: red !important;
+  font-size: 1.8rem;
+  color: #fff;
+  &:hover {
+    background-color: #fff !important;
+  }
+  cursor: pointer;
+}

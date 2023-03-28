@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.container {
+  display: flex;
+  gap: 50px;
+}
+.infor-detail {
+  display: flex;
+  padding-bottom: 20px;
+  font-size: 1.6rem;
+  gap: 30px;
+}
+.infor-detail p {
+  color: #e8eff5;
+}
+.infor-title {
+  width: 100px;
+}
+.infor-detail .type {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  color: red;
+  font-weight: bold;
+}
+.short-description {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  color: #a6b2c9;
+  line-height: 26px;
+}
+.infor-container {
+  margin: 20px 0;
+}
+.button {
+  display: flex;
+  gap: 20px;
+}
