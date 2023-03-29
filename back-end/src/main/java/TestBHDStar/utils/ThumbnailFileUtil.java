@@ -1,7 +1,7 @@
 package TestBHDStar.utils;
 
-import TestBHDStar.Exception.FilmActionException;
-import TestBHDStar.Exception.MovieNotFoundException;
+import TestBHDStar.exception.FilmActionException;
+import TestBHDStar.exception.MovieNotFoundException;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 

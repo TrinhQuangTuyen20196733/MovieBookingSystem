@@ -1,4 +1,4 @@
-package TestBHDStar.Exception;
+package TestBHDStar.exception;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(String message) {

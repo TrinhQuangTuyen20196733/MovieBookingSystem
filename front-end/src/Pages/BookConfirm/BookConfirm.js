@@ -4,11 +4,59 @@ import { useLocation } from "react-router-dom";
 import SelectService from "~/components/SelectService";
 import numberToLetter from "~/utils/numberToLetter";
 import Button from "~/components/Button";
+import fetchAPI from "~/FetchAPI/fetchAPI";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import config from "~/config";
 const cx = classNames.bind(styles);
 function BookConfirm() {
+  const [confirmState, setConfirmState] = useState(true);
+  const [receiptConfirm, setReceiptConfirm] = useState({});
   const location = useLocation();
   const receipt_infor = location.state?.receipt_infor;
-  console.log(receipt_infor);
+  receipt_infor.seatBook.forEach((seat) => {
+    seat.status = true;
+  });
+  const handleConfirm = () => {
+    const serviceReceiptDTOList = receipt_infor.service.map(
+      (serviceReceipt) => {
+        return {
+          id: 0,
+          service_id: serviceReceipt.id,
+          receipt_id: 0,
+          count: serviceReceipt.count,
+        };
+      }
+    );
+    const receipt = {
+      userDTO: {
+        accountDTO: {
+          email: receipt_infor.user.email,
+        },
+      },
+      seatOnSessionDTOList: receipt_infor.seatBook,
+      serviceReceiptDTOList,
+    };
+
+    fetchAPI(`http://localhost:8080/api/receipts`, "POST", receipt)
+      .then((response) => {
+        if (response.status === 401) {
+          throw new Error("Bạn không có quyền truy cập đường dẫn này");
+        } else if (response.status === 404) {
+          throw new Error("Người dùng này không tồn tại");
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        alert("Bạn đã đặt vé thành công!");
+        setConfirmState(false);
+        setReceiptConfirm(data);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
   return (
     <div className={cx("wrapper")}>
       <SelectService chooseState chooseFood confirm />
@@ -109,14 +157,33 @@ function BookConfirm() {
             <span>{receipt_infor.user.email}</span>
           </div>
         </div>
-        <Button
-          type="text"
-          primaryColor
-          isTicketButton
-          className={cx("btn-next")}
-        >
-          Xác nhận
-        </Button>
+        {confirmState ? (
+          <Button
+            type="text"
+            primaryColor
+            isTicketButton
+            className={cx("btn-next")}
+            onClick={handleConfirm}
+          >
+            Xác nhận
+          </Button>
+        ) : (
+          <Link
+            to={config.routes.Receipt}
+            state={{
+              receiptConfirm,
+            }}
+          >
+            <Button
+              type="text"
+              primaryColor
+              isTicketButton
+              className={cx("btn-next")}
+            >
+              Xem hóa đơn của bạn
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );

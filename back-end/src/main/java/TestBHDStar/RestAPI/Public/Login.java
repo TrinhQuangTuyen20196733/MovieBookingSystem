@@ -18,10 +18,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 public class Login {
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private JWTService jwtService;
+    private final AuthenticationManager authenticationManager;
+    private final JWTService jwtService;
+
+    public Login(AuthenticationManager authenticationManager, JWTService jwtService) {
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
+    }
+
     @PostMapping("/login")
 
     public LoginResponse authenticateAccount(@Valid @RequestBody LoginRequest loginRequest) {

@@ -42,7 +42,6 @@ public class MovieEntity extends BaseEntity {
  private String type;
  @Temporal(TemporalType.DATE)
  @DateTimeFormat(pattern = "dd/MM/yyyy")
- @JsonFormat(pattern = "dd/MM/yyyy")
  @Column(name="start_date")
  private Date startDate;
  @Column(name="length")

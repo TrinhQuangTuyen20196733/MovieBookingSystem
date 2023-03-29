@@ -22,7 +22,9 @@ public class ServiceMapper implements Mapper<ServiceEntity, ServiceDTO> {
     }
     @Override
     public ServiceEntity toEntity(ServiceDTO dto) {
-        return null;
+        ModelMapper modelMapper = new ModelMapper();
+        TypeMap<ServiceDTO, ServiceEntity> typeMap = modelMapper.createTypeMap(ServiceDTO.class, ServiceEntity.class);
+        return modelMapper.map(dto, ServiceEntity.class);
     }
 
     @Override
@@ -43,6 +45,10 @@ public class ServiceMapper implements Mapper<ServiceEntity, ServiceDTO> {
 
     @Override
     public List<ServiceEntity> toEntityList(List<ServiceDTO> dtoList) {
-        return null;
+        List<ServiceEntity> entityList = new ArrayList<>();
+        dtoList.forEach((serviceDTO -> {
+            entityList.add(toEntity(serviceDTO));
+        }));
+        return  entityList;
     }
 }

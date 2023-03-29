@@ -24,11 +24,15 @@ const routes = {
   AddUser: "/them-nguoi-dung",
   AddMovie: "/them-phim",
   MovieList: "/danh-sach-phim",
-  Movie: "/movie",
+  Movie: "/movie/:movie_id",
   AddMovieSession: "/them-suat-chieu-phim",
   Booking: "/dat-ve-xem-phim",
   ServiceBook: "/dat-do-an",
   BookConfirm: "/xac-nhan",
+  Receipt: "/xem-hoa-don",
+  SessionList: "/danh-sach-suat-chieu",
+  ServiceList: "/danh-sach-dich-vu",
+  AddService: "/them-dich-vu",
 };
 
 export default routes;

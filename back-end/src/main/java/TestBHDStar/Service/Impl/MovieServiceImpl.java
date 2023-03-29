@@ -1,12 +1,11 @@
-package TestBHDStar.Service.Impl;
+package TestBHDStar.service.Impl;
 
 import TestBHDStar.DTO.MovieDTO;
 import TestBHDStar.DTO.Page.MoviePageDTO;
-import TestBHDStar.Exception.FilmActionException;
-import TestBHDStar.Exception.MovieNotFoundException;
+import TestBHDStar.exception.FilmActionException;
+import TestBHDStar.exception.MovieNotFoundException;
 import TestBHDStar.Repository.MovieRepository;
-import TestBHDStar.Repository.CustomizedRepository.MovieSearchRepository;
-import TestBHDStar.Service.MovieService;
+import TestBHDStar.service.MovieService;
 import TestBHDStar.entity.MovieEntity;
 import TestBHDStar.mapper.mapperImpl.MovieMapper;
 import TestBHDStar.utils.ThumbnailFileUtil;
@@ -27,12 +26,15 @@ import java.util.Optional;
 public class MovieServiceImpl implements MovieService {
     @Value("${MOVIE_PAGE_SIZE}")
     private int MOVIE_PAGE_SIZE;
-    @Autowired
-    MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
+
+    public MovieServiceImpl(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
 
 
     @Override
-    public MovieDTO save(MovieEntity movie) {
+    public MovieDTO createMovie(MovieEntity movie) {
 
         try{
             return MovieMapper.getInstance().toDTO(movieRepository.save(movie));
@@ -54,7 +56,7 @@ public class MovieServiceImpl implements MovieService {
  }
 
     @Override
-    public MovieDTO findById(int id) {
+    public MovieDTO findMovieById(int id) {
         Optional<MovieEntity> optionalMovie = movieRepository.findById(id);
         if (optionalMovie.isPresent()) {
             MovieDTO movieDTO = MovieMapper.getInstance().toDTO(optionalMovie.get());
@@ -65,14 +67,14 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieDTO updateNoImage(MovieEntity movieEntity) {
+    public MovieDTO updateMovieNoImage(MovieEntity movieEntity) {
         MovieEntity movie = movieRepository.findById(movieEntity.getId()).get();
         movieEntity.setThumbnail(movie.getThumbnail());
         return  MovieMapper.getInstance().toDTO(movieRepository.save(movieEntity));
     }
 
     @Override
-    public MoviePageDTO searchByTitle(String title,int page) {
+    public MoviePageDTO searchMovieByTitle(String title,int page) {
         SearchResult<MovieEntity> results = movieRepository.searchByTitle(title, page);
         long totalHits = results.total().hitCount();
         List<MovieEntity> movieEntityList = results.hits();
@@ -84,12 +86,12 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<MovieDTO> searchAllByTitle(String title) {
+    public List<MovieDTO> searchAllMovieByTitle(String title) {
         return movieRepository.searchAllByTitle(title);
     }
 
     @Override
-    public MoviePageDTO findPage(int pageNumber) {
+    public MoviePageDTO findMovieByPage(int pageNumber) {
         Pageable pageable = PageRequest.of(pageNumber, MOVIE_PAGE_SIZE);
         Page<MovieEntity> movieEntityPage = movieRepository.findAll(pageable);
         MoviePageDTO moviePageDTO = new MoviePageDTO();
@@ -100,7 +102,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteMovie(int id) {
         MovieEntity movieEntity;
       Optional<MovieEntity> optionalMovie = movieRepository.findById(id);
       if (optionalMovie.isPresent()) {
@@ -113,7 +115,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public MovieDTO createOrUpdate(MultipartFile image, MovieEntity movieEntity) {
+    public MovieDTO createOrUpdateMovie(MultipartFile image, MovieEntity movieEntity) {
         movieEntity.setThumbnail(ThumbnailFileUtil.getInstance().saveThumbnailToDisk(image));
         return  MovieMapper.getInstance().toDTO(movieRepository.save(movieEntity));
     }

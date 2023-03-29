@@ -12,11 +12,12 @@ import addDay from "~/utils/date/addDay";
 import RoomMovieSchedule from "~/components/RoomMovieSchedule";
 import { compareDateFormatter } from "~/utils/date/compareDateFormatter";
 import localDateConverter from "~/utils/date/localDateConverter";
-import session from "redux-persist/lib/storage/session";
+import { useParams } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 function Movie() {
   const date = new Date();
+  let { movie_id } = useParams();
 
   const [movie, setMovie] = useState("");
   const [movieSessions, setMovieSessions] = useState([]);
@@ -38,20 +39,29 @@ function Movie() {
     });
   };
   useEffect(() => {
+    fetchAPI(`http://localhost:8080/api/movies/${movie_id}`, "GET")
+      .then((response) => response.json())
+      .then((data) => {
+        data.thumbnail = URL.createObjectURL(
+          base64StringToBlob(data.thumbnail, "image/png")
+        );
+        setMovie(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     fetchAPI(
-      `http://localhost:8080/api/upcoming/13/sessions?date=${date.toISOString()}`,
+      `http://localhost:8080/api/movies/${movie_id}/upcoming/sessions?date=${date.toISOString()}`,
       "GET"
     )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        data[0].movieDTO.thumbnail = URL.createObjectURL(
-          base64StringToBlob(data[0].movieDTO.thumbnail, "image/png")
-        );
+
         data.forEach((session) => {
           session.startTime = localDateConverter(session.startTime);
         });
-        setMovie(data[0].movieDTO);
+
         setMovieSessions(data);
       })
       .catch((error) => {
@@ -65,6 +75,7 @@ function Movie() {
       .catch((error) => {
         console.log(error);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {}, [selectedDate]);
   const handleLeftSlide = () => {

@@ -20,27 +20,5 @@ public class ServiceEntity extends  BaseEntity{
     private String code;
     @Column(name = "cost")
     private int cost;
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER,
-            cascade = {
-                    CascadeType.DETACH,
-                    CascadeType.MERGE,
-                    CascadeType.REFRESH,
-                    CascadeType.PERSIST
-            })
-    @JoinTable(
-            name = "service_receipt",
-            joinColumns = @JoinColumn(name = "service_id"),
-            inverseJoinColumns  = @JoinColumn(name="receipt_id")
 
-    )
-    private List<Receipt>  receipts;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.PERSIST,
-    })
-    @JoinColumn(name = "receipt_id")
-    private Receipt receipt;
 }

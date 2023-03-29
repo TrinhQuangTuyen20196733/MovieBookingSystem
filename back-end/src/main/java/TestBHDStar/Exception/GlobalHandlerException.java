@@ -1,4 +1,4 @@
-package TestBHDStar.Exception;
+package TestBHDStar.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -45,6 +45,13 @@ public class GlobalHandlerException {
     }
     @ExceptionHandler({MovieNotFoundException.class})
     public ResponseEntity<ErrorResponse> handleMovieNotFound(Exception e){
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setCode(HttpStatus.NOT_FOUND.value());
+        errorResponse.setDescription(e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+    @ExceptionHandler({ReceiptException.class})
+    public ResponseEntity<ErrorResponse> handleReceiptException(Exception e){
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setCode(HttpStatus.NOT_FOUND.value());
         errorResponse.setDescription(e.getMessage());

@@ -1,10 +1,10 @@
-package TestBHDStar.Service;
+package TestBHDStar.service;
 
 import TestBHDStar.entity.RoleEntity;
 
 import java.util.Optional;
 
 public interface RoleService {
-    Optional<RoleEntity> findById(int id);
-    Optional<RoleEntity> findByCode( String code);
+    Optional<RoleEntity> findRoleById(int id);
+    Optional<RoleEntity> findRoleByCode( String code);
 }

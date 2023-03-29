@@ -1,12 +1,11 @@
-package TestBHDStar.Service.Impl;
+package TestBHDStar.service.Impl;
 
 import TestBHDStar.DTO.Page.UserPageDTO;
 import TestBHDStar.DTO.UserDTO;
-import TestBHDStar.Exception.DuplicatedEmailException;
-import TestBHDStar.Exception.UserNotFoundException;
+import TestBHDStar.exception.DuplicatedEmailException;
+import TestBHDStar.exception.UserNotFoundException;
 import TestBHDStar.Repository.UserRepository;
-import TestBHDStar.Repository.Impl.UserRepositoryImpl;
-import TestBHDStar.Service.UserService;
+import TestBHDStar.service.UserService;
 import TestBHDStar.entity.UserEntity;
 import TestBHDStar.mapper.mapperImpl.UserMapper;
 import org.hibernate.search.engine.search.query.SearchResult;
@@ -24,12 +23,15 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Value("${USER_PAGE_SIZE}")
     private int USER_PAGE_SIZE;
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
 
     @Override
-    public UserDTO save(UserEntity userEntity) {
+    public UserDTO createUser(UserEntity userEntity) {
         try {
             return UserMapper.getInstance().toDTO(userRepository.save(userEntity));
         }
@@ -45,7 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO findById(int id) {
+    public UserDTO findUserById(int id) {
         Optional<UserEntity> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             UserDTO userDTO = UserMapper.getInstance().toDTO(userOptional.get());
@@ -56,7 +58,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserPageDTO findPage(int pageNumber) {
+    public UserPageDTO findUserByPage(int pageNumber) {
         Pageable pageable = PageRequest.of(pageNumber, USER_PAGE_SIZE);
         Page<UserEntity> userEntityPage = userRepository.findAll(pageable);
         UserPageDTO userPageDTO = new UserPageDTO();
@@ -67,7 +69,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserPageDTO searchByFullNameOrEmail(String fullNameOrEmail, int page) {
+    public UserPageDTO searchUserByFullNameOrEmail(String fullNameOrEmail, int page) {
         SearchResult<UserEntity> results = userRepository.searchByFullNameOrEmail(fullNameOrEmail, page);
         long totalHits = results.total().hitCount();
         List<UserEntity> userEntityList = results.hits();
@@ -79,7 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteUser(int id) {
 
         try{
             userRepository.deleteById(id);

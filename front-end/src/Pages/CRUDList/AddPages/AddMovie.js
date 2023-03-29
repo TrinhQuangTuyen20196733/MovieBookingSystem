@@ -143,7 +143,7 @@ function AddMovie() {
         });
     } else if (thumbnail == null) {
       fetchAPI(
-        `http://localhost:8080/admin/movies/noImageUpdate/${id}`,
+        `http://localhost:8080/admin/noImageUpdate/movies/${id}`,
         "PUT",
         movieInfor
       )

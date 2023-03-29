@@ -38,7 +38,7 @@ public class BaseEntity {
     private String createdBy;
 
     @Column(name = "modified_by")
-    @LastModifiedBy
+     @LastModifiedDate
     private String modifiedBy;
 
 }

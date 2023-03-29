@@ -1,4 +1,4 @@
-package TestBHDStar.Exception;
+package TestBHDStar.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

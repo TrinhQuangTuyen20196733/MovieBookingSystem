@@ -1,4 +1,4 @@
-package TestBHDStar.Service;
+package TestBHDStar.service;
 
 import TestBHDStar.entity.AccountEntity;
 

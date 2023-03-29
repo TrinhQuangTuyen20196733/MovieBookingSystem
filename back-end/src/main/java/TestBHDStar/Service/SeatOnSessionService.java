@@ -1,4 +1,4 @@
-package TestBHDStar.Service;
+package TestBHDStar.service;
 
 import TestBHDStar.DTO.SeatOnSessionDTO;
 import org.springframework.stereotype.Service;

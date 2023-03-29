@@ -1,4 +1,4 @@
-package TestBHDStar.Service.Impl;
+package TestBHDStar.service.Impl;
 
 import TestBHDStar.security.AccountDetails;
 import TestBHDStar.Repository.AccountRepository;
@@ -12,8 +12,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountDetailsService implements UserDetailsService {
-    @Autowired
-    AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
+
+    public AccountDetailsService(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         AccountEntity  account = accountRepository.findByEmail(email);

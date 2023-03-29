@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./MovieInfo.module.scss";
 import Image from "../Image";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 function MovieInfo({ movie }) {
   return (
@@ -17,9 +18,16 @@ function MovieInfo({ movie }) {
       <div className={cx("movie-title-wrapper")}>
         <span className={cx("movie-title")}>{movie.title}</span>
       </div>
-      <Button text primaryColor isTicketButton className={cx("ticket-button")}>
-        MUA VÉ
-      </Button>
+      <Link to={`/movie/${movie.id}`}>
+        <Button
+          text
+          primaryColor
+          isTicketButton
+          className={cx("ticket-button")}
+        >
+          MUA VÉ
+        </Button>
+      </Link>
     </div>
   );
 }

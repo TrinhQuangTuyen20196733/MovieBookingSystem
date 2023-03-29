@@ -1,6 +1,6 @@
 package TestBHDStar.security;
 
-import TestBHDStar.Service.Impl.AccountDetailsService;
+import TestBHDStar.service.Impl.AccountDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

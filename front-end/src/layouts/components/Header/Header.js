@@ -45,24 +45,66 @@ function Header() {
         placement="bottom"
         render={(attrs) => (
           <PoperWrapper className={cx("menu-list")}>
-            <Link to={config.routes.FilmSchedule} className={cx("menu-link")}>
-              lịch chiếu
-            </Link>
-            <Link to={config.routes.TheaterSystem} className={cx("menu-link")}>
-              hệ thống rạp
-            </Link>
-            <Link to={config.routes.Event} className={cx("menu-link")}>
-              khuyến mãi | sự kiện
-            </Link>
-            <Link to={config.routes.Advertise} className={cx("menu-link")}>
-              dịch vụ quảng cáo
-            </Link>
-            <Link to={config.routes.FilmSchedule} className={cx("menu-link")}>
-              tuyển dụng
-            </Link>
-            <Link to={config.routes.Information} className={cx("menu-link")}>
-              về chúng tôi
-            </Link>
+            {authentication.roles.includes("ADMIN") ? (
+              <>
+                <Link to={config.routes.MovieList} className={cx("menu-link")}>
+                  Danh sách phim
+                </Link>
+                <Link to={config.routes.UserList} className={cx("menu-link")}>
+                  Danh sách người dùng
+                </Link>
+
+                <Link className={cx("menu-link")}>
+                  Danh sách phòng chiếu phim
+                </Link>
+                <Link
+                  to={config.routes.SessionList}
+                  className={cx("menu-link")}
+                >
+                  Danh sách lịch chiếu phim
+                </Link>
+                <Link
+                  to={config.routes.ServiceList}
+                  className={cx("menu-link")}
+                >
+                  Đồ ăn và nước uống
+                </Link>
+                <Link className={cx("menu-link")}>Danh sách hóa đơn</Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to={config.routes.FilmSchedule}
+                  className={cx("menu-link")}
+                >
+                  lịch chiếu
+                </Link>
+                <Link
+                  to={config.routes.TheaterSystem}
+                  className={cx("menu-link")}
+                >
+                  hệ thống rạp
+                </Link>
+                <Link to={config.routes.Event} className={cx("menu-link")}>
+                  khuyến mãi | sự kiện
+                </Link>
+                <Link to={config.routes.Advertise} className={cx("menu-link")}>
+                  dịch vụ quảng cáo
+                </Link>
+                <Link
+                  to={config.routes.FilmSchedule}
+                  className={cx("menu-link")}
+                >
+                  tuyển dụng
+                </Link>
+                <Link
+                  to={config.routes.Information}
+                  className={cx("menu-link")}
+                >
+                  về chúng tôi
+                </Link>
+              </>
+            )}
           </PoperWrapper>
         )}
       >

@@ -3,8 +3,8 @@ package TestBHDStar.RestAPI.Admin;
 import TestBHDStar.DTO.UserDTO;
 import TestBHDStar.DTO.Page.UserPageDTO;
 import TestBHDStar.DTO.ResponseMessage;
-import TestBHDStar.Service.RoleService;
-import TestBHDStar.Service.UserService;
+import TestBHDStar.service.RoleService;
+import TestBHDStar.service.UserService;
 import TestBHDStar.entity.RoleEntity;
 import TestBHDStar.entity.UserEntity;
 import TestBHDStar.mapper.mapperImpl.UserMapper;
@@ -21,21 +21,24 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/admin")
 public class AdminUserController {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    RoleService roleService;
+    private final UserService userService;
+    private final RoleService roleService;
+
+    public AdminUserController(UserService userService, RoleService roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
+    }
 
     @PostMapping("/users")
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO user){
       UserEntity userEntity = UserMapper.getInstance().toEntity(user);
       List<RoleEntity> roleEntityList = new ArrayList<>();
       userEntity.getAccount().getRoles().forEach(role->{
-          roleEntityList.add(roleService.findByCode(role.getCode()).get());
+          roleEntityList.add(roleService.findRoleByCode(role.getCode()).get());
       });
       userEntity.getAccount().setRoles(roleEntityList);
 
-          UserDTO userDTO=  userService.save(userEntity);
+          UserDTO userDTO=  userService.createUser(userEntity);
           return  ResponseEntity.status(HttpStatus.OK).body(userDTO);
     }
     @PutMapping("/users/{id}")
@@ -43,11 +46,11 @@ public class AdminUserController {
         UserEntity userEntity = UserMapper.getInstance().toEntity(user);
         List<RoleEntity> roleEntityList = new ArrayList<>();
         userEntity.getAccount().getRoles().forEach(role->{
-            roleEntityList.add(roleService.findByCode(role.getCode()).get());
+            roleEntityList.add(roleService.findRoleByCode(role.getCode()).get());
         });
         userEntity.getAccount().setRoles(roleEntityList);
         userEntity .setId(id);
-        UserDTO userDTO= userService.save(userEntity);
+        UserDTO userDTO= userService.createUser(userEntity);
         return  ResponseEntity.status(HttpStatus.OK).body(userDTO);
 
     }
@@ -56,22 +59,22 @@ public class AdminUserController {
         return userService.findAll();
     }
     @GetMapping("/users/pages/{pageNumber}")
-    public UserPageDTO findAllByPage(@PathVariable int pageNumber) {
-        return  userService.findPage(pageNumber);
+    public UserPageDTO findAllUserByPage(@PathVariable int pageNumber) {
+        return  userService.findUserByPage(pageNumber);
     }
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserDTO> findOne(@PathVariable int id){
-        UserDTO userDTO = userService.findById(id);
+    public ResponseEntity<UserDTO> findUserById(@PathVariable int id){
+        UserDTO userDTO = userService.findUserById(id);
         return ResponseEntity.status(HttpStatus.OK).body(userDTO);
     }
     @GetMapping("/users/search/pages/{pageNumber}")
-    public UserPageDTO searchByFullNameOrEmail(@RequestParam String fullNameOrEmail,@PathVariable int pageNumber){
-        return userService.searchByFullNameOrEmail(fullNameOrEmail,pageNumber);
+    public UserPageDTO searchUserByFullNameOrEmail(@RequestParam String fullNameOrEmail,@PathVariable int pageNumber){
+        return userService.searchUserByFullNameOrEmail(fullNameOrEmail,pageNumber);
     }
     @DeleteMapping("/users/{id}")
     public  ResponseEntity<?>  deleteUser(@PathVariable @Positive int id){
 
-            userService.delete(id);
+            userService.deleteUser(id);
 
 
         return  ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("Người dùng đã được xóa thành công!"));

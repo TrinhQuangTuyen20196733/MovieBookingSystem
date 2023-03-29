@@ -27,6 +27,10 @@ import AddMovieSession from "~/Pages/CRUDList/AddPages/AddMovieSession";
 import Booking from "~/Pages/Booking";
 import ServiceBook from "~/Pages/ServiceBook";
 import BookConfirm from "~/Pages/BookConfirm";
+import Receipt from "~/Pages/Receipt";
+import SessionList from "~/Pages/CRUDList/PageList/SessionList";
+import ServiceList from "~/Pages/CRUDList/PageList/ServiceList";
+import AddService from "~/Pages/CRUDList/AddPages/AddService";
 const publicRoutes = [
   {
     path: config.routes.Home,
@@ -114,26 +118,6 @@ const publicRoutes = [
     component: UnAuthorization,
     layout: HomeLayout,
   },
-  {
-    path: config.routes.Movie,
-    component: Movie,
-    layout: HomeLayout,
-  },
-  {
-    path: config.routes.Booking,
-    component: Booking,
-    layout: HomeLayout,
-  },
-  {
-    path: config.routes.ServiceBook,
-    component: ServiceBook,
-    layout: HomeLayout,
-  },
-  {
-    path: config.routes.BookConfirm,
-    component: BookConfirm,
-    layout: HomeLayout,
-  },
 ];
 export const privateRoutes = [
   {
@@ -183,6 +167,54 @@ export const privateRoutes = [
     component: AddMovieSession,
     layout: HomeLayout,
     role: "ADMIN",
+  },
+  {
+    path: config.routes.SessionList,
+    component: SessionList,
+    layout: HomeLayout,
+    role: "ADMIN",
+  },
+  {
+    path: config.routes.ServiceList,
+    component: ServiceList,
+    layout: HomeLayout,
+    role: "ADMIN",
+  },
+  {
+    path: config.routes.AddService,
+    component: AddService,
+    layout: HomeLayout,
+    role: "ADMIN",
+  },
+  {
+    path: config.routes.Movie,
+    component: Movie,
+    layout: HomeLayout,
+    role: "USER",
+  },
+  {
+    path: config.routes.Booking,
+    component: Booking,
+    layout: HomeLayout,
+    role: "USER",
+  },
+  {
+    path: config.routes.ServiceBook,
+    component: ServiceBook,
+    layout: HomeLayout,
+    role: "USER",
+  },
+  {
+    path: config.routes.BookConfirm,
+    component: BookConfirm,
+    layout: HomeLayout,
+    role: "USER",
+  },
+  {
+    path: config.routes.Receipt,
+    component: Receipt,
+    layout: HomeLayout,
+    role: "USER",
   },
 ];
 export default publicRoutes;
